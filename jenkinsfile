@@ -1,34 +1,27 @@
-pipeline{
+pipeline {
     agent any
-       environment {
-             notifymail = "abhishekdeep37@gmail.com"
-       }
-    tools{
-         maven "maven_home"
-    }
-     triggers {
-         cron('0 06 * * *')
-         }
-    stages{
-        stage("code checout"){
-            steps{
-        bat "echo hello"
+
+    stages {
+        stage('Build') {
+            steps {
+                // Replace with your build commands or scripts
+                sh 'echo "Building..."'
+            }
         }
-    }
-    stage("code build"){
-        steps{
-        bat "mvn clean"
+
+        stage('Test') {
+            steps {
+                // Replace with your test commands or scripts
+                sh 'echo "Testing..."'
+            }
         }
-    }
-    stage("unit test"){
-            steps{
-        bat "mvn test"
-        }
-    }
-}
-post{
-    success{
-        bat "echo Test pass"
+
+        stage('Deploy') {
+            steps {
+                // Replace with your deployment commands or scripts
+                sh 'echo "Deploying..."'
+            }
         }
     }
 }
+
